@@ -21,4 +21,4 @@ bash
 
 .env
 
-git rm --cached .env
+
