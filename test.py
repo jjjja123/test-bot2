@@ -16,6 +16,9 @@ load_dotenv()
 
 TOKEN = os.getenv('BOT_TOKEN')
 
+if TOKEN is None:
+    raise ValueError("❌ BOT_TOKEN이 .env에서 로드되지 않았습니다.")
+
 MCHID = 1131597349391712432
 TCHID = 1131597349391712433
 
