@@ -1,7 +1,4 @@
-import threading
-import http.server
-import socketserver
-#포트 실행
+
 import discord
 from discord.ext import commands, tasks
 from discord import app_commands, ButtonStyle, Interaction, ui
@@ -22,6 +19,22 @@ TOKEN = os.getenv('BOT_TOKEN')
 
 if TOKEN is None:
     raise ValueError("❌ BOT_TOKEN이 .env에서 로드되지 않았습니다.")
+
+# 포트 체크
+import threading
+import socket
+
+def run_health_server():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(("0.0.0.0", 8000))
+    s.listen(1)
+    while True:
+        conn, addr = s.accept()
+        conn.close()
+
+threading.Thread(target=run_health_server, daemon=True).start()
+
+# 포트 체크
 
 MCHID = 1131597349391712432
 TCHID = 1131597349391712433
@@ -67,14 +80,6 @@ async def main():
 import asyncio
 asyncio.run(main())
 
-#port 실행
-def run_health_server():
-    PORT = 8000
-    handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", PORT), handler) as httpd:
-        print(f"Health check server running on port {PORT}")
-        httpd.serve_forever()
 
-threading.Thread(target=run_health_server, daemon=True).start()
 
 
