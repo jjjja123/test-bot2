@@ -1,3 +1,7 @@
+import threading
+import http.server
+import socketserver
+#포트 실행
 import discord
 from discord.ext import commands, tasks
 from discord import app_commands, ButtonStyle, Interaction, ui
@@ -62,5 +66,15 @@ async def main():
 
 import asyncio
 asyncio.run(main())
+
+#port 실행
+def run_health_server():
+    PORT = 8000
+    handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", PORT), handler) as httpd:
+        print(f"Health check server running on port {PORT}")
+        httpd.serve_forever()
+
+threading.Thread(target=run_health_server, daemon=True).start()
 
 
