@@ -1,1 +1,129 @@
+import discord
+from discord.ext import commands
+from discord import app_commands
+import re
+import emoji
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
+# 봇 활성화 변수 설정
+bot_active = True
+
+# 시간대 설정
+TZ = ZoneInfo("Asia/Seoul")
+
+# URL 탐지
+URL_REGEX = re.compile(r"https?://[^\s<>()]+")
+
+# 봇 기본 권한 설정
+intents = discord.Intents.default()
+intents.members = True
+intents.messages = True
+intents.message_content = True
+intents.guilds = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# 로그를 보낼 채널 ID ⚠️변경해야함!!!
+LOG_CHANNEL_ID = 123456789012345678
+
+
+async def send_log(message: str):
+    """지정 채널에 로그 메시지 전송"""
+    channel = bot.get_channel(LOG_CHANNEL_ID)
+    if channel:
+        await channel.send(message)
+
+
+# 1. 멤버 입장/퇴장 로그
+@bot.event
+async def on_member_join(member):
+    now = datetime.now(TZ).strftime("%Y-%m-%d %H:%M:%S")
+    log_msg = f"[입장] {member.name} ({member.id}) - {now}" # 멤버 입장시 이름, 아이디, 날짜와 시간 출력
+    await send_log(log_msg)
+
+
+@bot.event
+async def on_member_remove(member):
+    now = datetime.now(TZ).strftime("%Y-%m-%d %H:%M:%S")
+    log_msg = f"[퇴장] {member.name} ({member.id}) - {now}" # 멤버 퇴장시 이름, 아이디, 날짜와 시간 출력
+    await send_log(log_msg)
+
+
+# 2. 메시지 내 첨부 요소, 첨부파일 감지
+@bot.event
+async def on_message(message):
+    if message.author.bot:
+        return  # 봇 메시지 무시
+
+    global bot_active
+    if not bot_active:
+        await bot.process_commands(message)
+        return
+
+    now = datetime.now(TZ).strftime("%Y-%m-%d %H:%M:%S")
+
+    contents_detected = []
+
+    # 2-1 커스텀 이모지 탐지
+    if re.search(r"<a?:\w+:\d+>", message.content):
+        contents_detected.append("커스텀 이모지")
+
+    # 2-2 유니코드 이모지 탐지
+    if any(char in emoji.UNICODE_EMOJI['en'] for char in message.content):
+        contents_detected.append("유니코드 이모지")
+
+    # 2-3 스티커 탐지
+    if message.stickers:
+        contents_detected.append("스티커")
+
+    # 2-4 GIF 탐지 (첨부된 파일 중 .gif)
+    if any(attachment.filename.endswith(".gif") for attachment in message.attachments):
+        contents_detected.append("GIF")
+
+    # 2-5 URL 탐지
+    if URL_REGEX.search(message.content):
+        contents_detected.append("URL")
+
+    if contents_detected:
+        log_msg = f"[메시지 첨부] {message.author} ({message.author.id}) - {now} | 포함된 항목: {', '.join(contents_detected)}"
+        await send_log(log_msg)
+        # 2-1~2-4 내용 첨부시 이름, 아이디, 날짜와 시간, 어떤 항목 첨부되었는지 출력
+
+    # 2-6 첨부파일 탐지
+    if message.attachments:
+        for file in message.attachments:
+            file_type = file.content_type if file.content_type else "형식이 명확하지 않음"
+            log_msg = f"[첨부파일] {message.author} ({message.author.id}) - {now} | 파일명: {file.filename}, 형식: {file_type}"
+            await send_log(log_msg)
+        # 첨부파일 있으면 이름, 아이디, 날짜와 시간, 첨부파일 이름, 형식 출력
+
+    await bot.process_commands(message)
+
+# 봇 로그 기능 활성화 명령어
+@bot.tree.command(name="on", description="봇 로그 기능 활성화")
+async def slash_on(interaction: discord.Interaction):
+    if not interaction.user.guild_permissions.administrator:
+        await interaction.response.send_message("❌관리자만 사용 가능", ephemeral=True)
+        return
+    global bot_active
+    bot_active = True
+    await interaction.response.send_message("봇 로그 기능 활성화", ephemeral=True)
+
+# 봇 로그 기능 비활성화 명령어
+@bot.tree.command(name="off", description="봇 로그 기능 비활성화")
+async def slash_off(interaction: discord.Interaction):
+    if not interaction.user.guild_permissions.administrator:
+        await interaction.response.send_message("❌관리자만 사용 가능", ephemeral=True)
+        return
+    global bot_active
+    bot_active = False
+    await interaction.response.send_message("봇 로그 기능 비활성화", ephemeral=True)
+
+@bot.event
+async def on_ready():
+    await bot.tree.sync()  # 슬래시 명령어 서버 동기화
+    print(f"{bot.user} - 봇 준비 완료")
+
+# 실행
+bot.run("YOUR_BOT_TOKEN")
