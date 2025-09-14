@@ -490,6 +490,30 @@ def register_security_commands(bot: commands.Bot, cfg: SecurityConfig):
             await itx.response.send_message(f"{user.mention} — {note}", ephemeral=True)
         except Exception as e:
             await itx.response.send_message(f"오류: {e}", ephemeral=True)
+            
+    @bot.tree.command(name="채널설정", description="로그를 출력할 채팅채널 생성")
+    async def _create_abc_channels(itx: discord.Interaction):
+        if not itx.user.guild_permissions.administrator:
+            await itx.response.send_message("관리자만 사용 가능", ephemeral=True)
+            return
+
+        guild = itx.guild
+        if guild is None:
+            await itx.response.send_message("서버에서만 사용 가능", ephemeral=True)
+            return
+
+        category = discord.utils.get(guild.categories, name="abc")
+        if not category:
+            category = await guild.create_category("이화봇")
+
+        created_channels = []
+        for name in ["log_channel", "alert_channel", "quarantine_role"]:
+            if discord.utils.get(guild.text_channels, name=name):
+                continue
+            ch = await guild.create_text_channel(name, category=category)
+            created_channels.append(ch.name)
+
+        await itx.response.send_message(f"생성 완료: {', '.join(created_channels)}", ephemeral=True)
 
 # 주기적 정리
 async def _periodic_cleanup():
@@ -525,3 +549,4 @@ async def start_background_tasks(bot: commands.Bot, cfg: SecurityConfig):
         await _close_http()
     bot.add_listener(_on_disconnect, "on_disconnect")
   
+
