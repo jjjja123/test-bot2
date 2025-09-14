@@ -1,129 +1,104 @@
 import discord
-from discord.ext import commands
-from discord import app_commands
-import re
-import emoji
+from discord.ext import commands, tasks
+from discord import app_commands, ButtonStyle, Interaction, ui
+import datetime
 from datetime import datetime
-from zoneinfo import ZoneInfo
+import pytz
+import tracemalloc
+import random
+import asyncio
+import json
+import os
 
-# 봇 활성화 변수 설정
-bot_active = True
+from dotenv import load_dotenv
+load_dotenv()
 
-# 시간대 설정
-TZ = ZoneInfo("Asia/Seoul")
+TOKEN = os.getenv('BOT_TOKEN')
+if TOKEN is None:
+    raise ValueError(" BOT_TOKEN이 .env에서 로드되지 않았습니다.")
 
-# URL 탐지
-URL_REGEX = re.compile(r"https?://[^\s<>()]+")
+#  Health 체크 서버 
+import threading
+import socket
 
-# 봇 기본 권한 설정
-intents = discord.Intents.default()
-intents.members = True
-intents.messages = True
+def run_health_server():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(("0.0.0.0", 8000))
+    s.listen(1)
+    while True:
+        conn, addr = s.accept()
+        conn.close()
+
+threading.Thread(target=run_health_server, daemon=True).start()
+
+# 채널 상수
+MCHID = 1375120898473853098
+TCHID = 1416614278969950330
+
+# Intents
+intents = discord.Intents.all()
 intents.message_content = True
-intents.guilds = True
+intents.members = True
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+# 보안 코어 주입을 위한 import 
+# - 보안 로깅/슬래시 명령/이벤트 바인딩/백그라운드 태스크는 코어에서 담당
+from security_core import (
+    apply_logging,
+    load_config,
+    register_security_commands,
+    on_security_events_wireup,
+    start_background_tasks,
+)
 
-# 로그를 보낼 채널 ID ⚠️변경해야함!!!
-LOG_CHANNEL_ID = 123456789012345678
+class MyBot(commands.Bot):
+    def __init__(self, **kwargs):
+        super().__init__(command_prefix='!', intents=intents, **kwargs)
+        self.synced = False
+        # (추가) 코어 설정/로거 보관
+        self.cfg = None
+        self.logger = None
+        
+    async def on_ready(self):
+        print(f'봇이 로그인되었습니다: {self.user.name}')
 
+        # (추가) 최초 1회에 한해 코어 초기화/바인딩
+        if self.logger is None:
+            self.logger = apply_logging()        # 로테이팅 파일 로그 + 콘솔
+        if self.cfg is None:
+            self.cfg = load_config()             # .env 플래그 로드(보수적 기본)
 
-async def send_log(message: str):
-    """지정 채널에 로그 메시지 전송"""
-    channel = bot.get_channel(LOG_CHANNEL_ID)
-    if channel:
-        await channel.send(message)
+            # 보안 이벤트/명령 주입
+            on_security_events_wireup(self, self.cfg)
+            register_security_commands(self, self.cfg)
+            await start_background_tasks(self, self.cfg)  # DB 초기화/정리 태스크/HTTP 세션 등
 
+        if not self.synced:
+            await self.tree.sync()
+            print("슬래시 명령어가 동기화되었습니다.")
+            self.synced = True
 
-# 1. 멤버 입장/퇴장 로그
-@bot.event
-async def on_member_join(member):
-    now = datetime.now(TZ).strftime("%Y-%m-%d %H:%M:%S")
-    log_msg = f"[입장] {member.name} ({member.id}) - {now}" # 멤버 입장시 이름, 아이디, 날짜와 시간 출력
-    await send_log(log_msg)
+        # 메모리 추적 시작
+        tracemalloc.start()
 
+    # 아래 원본 on_message 구현은 충돌을 피하기 위해 제외/주석 처리합니다.
+    # async def on_message(self, message):
+    #     if message.author.bot:
+    #         return
+    #     if message.content == "핑":
+    #         await message.channel.send("퐁")
 
-@bot.event
-async def on_member_remove(member):
-    now = datetime.now(TZ).strftime("%Y-%m-%d %H:%M:%S")
-    log_msg = f"[퇴장] {member.name} ({member.id}) - {now}" # 멤버 퇴장시 이름, 아이디, 날짜와 시간 출력
-    await send_log(log_msg)
+# 인스턴스 생성 (원본 유지)
+bot = MyBot()
 
+# ===== (대체) 핑퐁은 on_message 대신 커맨드로 제공하여 충돌 방지 =====
+@bot.command(name="ping")
+async def ping_cmd(ctx: commands.Context):
+    await ctx.send("퐁")
+#
 
-# 2. 메시지 내 첨부 요소, 첨부파일 감지
-@bot.event
-async def on_message(message):
-    if message.author.bot:
-        return  # 봇 메시지 무시
+# (실행부)
+async def main():
+    await bot.start(TOKEN)
 
-    global bot_active
-    if not bot_active:
-        await bot.process_commands(message)
-        return
-
-    now = datetime.now(TZ).strftime("%Y-%m-%d %H:%M:%S")
-
-    contents_detected = []
-
-    # 2-1 커스텀 이모지 탐지
-    if re.search(r"<a?:\w+:\d+>", message.content):
-        contents_detected.append("커스텀 이모지")
-
-    # 2-2 유니코드 이모지 탐지
-    if any(char in emoji.UNICODE_EMOJI['en'] for char in message.content):
-        contents_detected.append("유니코드 이모지")
-
-    # 2-3 스티커 탐지
-    if message.stickers:
-        contents_detected.append("스티커")
-
-    # 2-4 GIF 탐지 (첨부된 파일 중 .gif)
-    if any(attachment.filename.endswith(".gif") for attachment in message.attachments):
-        contents_detected.append("GIF")
-
-    # 2-5 URL 탐지
-    if URL_REGEX.search(message.content):
-        contents_detected.append("URL")
-
-    if contents_detected:
-        log_msg = f"[메시지 첨부] {message.author} ({message.author.id}) - {now} | 포함된 항목: {', '.join(contents_detected)}"
-        await send_log(log_msg)
-        # 2-1~2-4 내용 첨부시 이름, 아이디, 날짜와 시간, 어떤 항목 첨부되었는지 출력
-
-    # 2-6 첨부파일 탐지
-    if message.attachments:
-        for file in message.attachments:
-            file_type = file.content_type if file.content_type else "형식이 명확하지 않음"
-            log_msg = f"[첨부파일] {message.author} ({message.author.id}) - {now} | 파일명: {file.filename}, 형식: {file_type}"
-            await send_log(log_msg)
-        # 첨부파일 있으면 이름, 아이디, 날짜와 시간, 첨부파일 이름, 형식 출력
-
-    await bot.process_commands(message)
-
-# 봇 로그 기능 활성화 명령어
-@bot.tree.command(name="on", description="봇 로그 기능 활성화")
-async def slash_on(interaction: discord.Interaction):
-    if not interaction.user.guild_permissions.administrator:
-        await interaction.response.send_message("❌관리자만 사용 가능", ephemeral=True)
-        return
-    global bot_active
-    bot_active = True
-    await interaction.response.send_message("봇 로그 기능 활성화", ephemeral=True)
-
-# 봇 로그 기능 비활성화 명령어
-@bot.tree.command(name="off", description="봇 로그 기능 비활성화")
-async def slash_off(interaction: discord.Interaction):
-    if not interaction.user.guild_permissions.administrator:
-        await interaction.response.send_message("❌관리자만 사용 가능", ephemeral=True)
-        return
-    global bot_active
-    bot_active = False
-    await interaction.response.send_message("봇 로그 기능 비활성화", ephemeral=True)
-
-@bot.event
-async def on_ready():
-    await bot.tree.sync()  # 슬래시 명령어 서버 동기화
-    print(f"{bot.user} - 봇 준비 완료")
-
-# 실행
-bot.run("YOUR_BOT_TOKEN")
+if __name__ == "__main__":
+    asyncio.run(main())
