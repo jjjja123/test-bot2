@@ -1,0 +1,9 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\core",
+    "\\yara_rules"
+  ],
+  "SelectedNode": "\\yara_rules\\suspicious_pdf.yar",
+  "PreviewInSolutionExplorer": false
+}
