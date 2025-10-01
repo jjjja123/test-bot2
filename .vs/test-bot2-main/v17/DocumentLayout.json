@@ -1,0 +1,292 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\suspicious_pdf.yar||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:yara_rules\\suspicious_pdf.yar||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\worker.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:worker.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\block_js.yar||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:yara_rules\\block_js.yar||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\detect_eicar.yar||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:yara_rules\\detect_eicar.yar||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\yara_scan.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\yara_scan.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\tasks.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\tasks.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\moderation.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\moderation.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\rabbitmq.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\rabbitmq.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\clamav.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\clamav.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\url_check.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\url_check.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\risk.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\risk.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\db.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\db.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\logging.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\logging.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\config.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\config.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "suspicious_pdf.yar",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\suspicious_pdf.yar",
+              "RelativeDocumentMoniker": "yara_rules\\suspicious_pdf.yar",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\suspicious_pdf.yar",
+              "RelativeToolTip": "yara_rules\\suspicious_pdf.yar",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-27T12:29:02.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "block_js.yar",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\block_js.yar",
+              "RelativeDocumentMoniker": "yara_rules\\block_js.yar",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\block_js.yar",
+              "RelativeToolTip": "yara_rules\\block_js.yar",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-27T12:28:51.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "detect_eicar.yar",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\detect_eicar.yar",
+              "RelativeDocumentMoniker": "yara_rules\\detect_eicar.yar",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\yara_rules\\detect_eicar.yar",
+              "RelativeToolTip": "yara_rules\\detect_eicar.yar",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-27T12:28:34.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "yara_scan.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\yara_scan.py",
+              "RelativeDocumentMoniker": "core\\yara_scan.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\yara_scan.py",
+              "RelativeToolTip": "core\\yara_scan.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:26:04.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "tasks.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\tasks.py",
+              "RelativeDocumentMoniker": "core\\tasks.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\tasks.py",
+              "RelativeToolTip": "core\\tasks.py",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:25:33.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "moderation.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\moderation.py",
+              "RelativeDocumentMoniker": "core\\moderation.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\moderation.py",
+              "RelativeToolTip": "core\\moderation.py",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADgAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:23:56.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "rabbitmq.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\rabbitmq.py",
+              "RelativeDocumentMoniker": "core\\rabbitmq.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\rabbitmq.py",
+              "RelativeToolTip": "core\\rabbitmq.py",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:23:04.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "clamav.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\clamav.py",
+              "RelativeDocumentMoniker": "core\\clamav.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\clamav.py",
+              "RelativeToolTip": "core\\clamav.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:22:27.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "url_check.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\url_check.py",
+              "RelativeDocumentMoniker": "core\\url_check.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\url_check.py",
+              "RelativeToolTip": "core\\url_check.py",
+              "ViewState": "AgIAABMAAAAAAAAAAAAswC4AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:22:07.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "risk.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\risk.py",
+              "RelativeDocumentMoniker": "core\\risk.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\risk.py",
+              "RelativeToolTip": "core\\risk.py",
+              "ViewState": "AgIAABgAAAAAAAAAAAAswCwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:21:54.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "db.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\db.py",
+              "RelativeDocumentMoniker": "core\\db.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\db.py",
+              "RelativeToolTip": "core\\db.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:21:18.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "logging.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\logging.py",
+              "RelativeDocumentMoniker": "core\\logging.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\logging.py",
+              "RelativeToolTip": "core\\logging.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:20:51.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "config.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\config.py",
+              "RelativeDocumentMoniker": "core\\config.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\config.py",
+              "RelativeToolTip": "core\\config.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:20:25.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "worker.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\worker.py",
+              "RelativeDocumentMoniker": "worker.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\worker.py",
+              "RelativeToolTip": "worker.py",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:18:12.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "__init__.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\__init__.py",
+              "RelativeDocumentMoniker": "core\\__init__.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\core\\__init__.py",
+              "RelativeToolTip": "core\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:19:57.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "main.py",
+              "DocumentMoniker": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\main.py",
+              "RelativeDocumentMoniker": "main.py",
+              "ToolTip": "C:\\Users\\user1\\Downloads\\test-bot2-main (1)\\test-bot2-main\\main.py",
+              "RelativeToolTip": "main.py",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-27T12:10:52.434Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
